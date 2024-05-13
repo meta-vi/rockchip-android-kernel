@@ -92,7 +92,7 @@
 
 	cam_sensor: cam_sensor@36 {
 		compatible = "asus,cam_sensor";
-		status = "okay";
+		status = "disabled";
 		reg = <0x36>;
 		clocks = <&cru SCLK_CIF_OUT>;
 		clock-names = "xvclk";
@@ -109,6 +109,26 @@
 			};
 		};
 	};
+
+	imx477: imx477@1a {
+	       compatible = "sony,imx477";
+	       status = "okay";
+	       reg = <0x1a>;
+	       clocks = <&cru SCLK_CIF_OUT>;
+	       clock-names = "xvclk";
+
+	       enable-gpios = <&gpio4 RK_PA3 GPIO_ACTIVE_HIGH>;
+	       pinctrl-names = "rockchip,camera_default";
+	       pinctrl-0 = <&cif_clkout>;
+
+	       port {
+	               imx477_out: endpoint {
+	                       remote-endpoint = <&mipi_in_ucam0>;
+	                       data-lanes = <1 2>;
+	               };
+	       };
+	};
+
 };
 
 &mipi_dphy_rx0 {
@@ -125,7 +145,7 @@
 
 			mipi_in_ucam0: endpoint@1 {
 				reg = <1>;
-				remote-endpoint = <&cam_sensor_out>;
+				remote-endpoint = <&imx477_out>;
 				data-lanes = <1 2>;
 			};
 
