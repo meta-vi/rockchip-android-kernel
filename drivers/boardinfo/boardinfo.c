@@ -92,15 +92,15 @@ static int info_show(struct seq_file *m, void *v)
 			boardinfo = "unknown";
 	} else if (!strcmp(model, "rk3399")) {
 		if (pid == 0)
-			boardinfo = "Tinker Board 2";
+			boardinfo = "VisAI-Edge";
 		else if (pid == 1)
-			boardinfo = "Tinker Board 2S - 16GB";
+			boardinfo = "VisAI-Edge - 16GB";
 		else if (pid == 2)
-			boardinfo = "Tinker Board 2S - 32GB";
+			boardinfo = "VisAI-Edge - 32GB";
 		else if (pid == 3)
-			boardinfo = "Tinker Board 2 - TPS2556";
+			boardinfo = "VisAI-Edge - TPS2556";
 		else if (pid == 4)
-			boardinfo = "Tinker Board 2S - 16GB - TPS2556";
+			boardinfo = "VisAI-Edge - 16GB - TPS2556";
 		else
 			boardinfo = "unknown";
 	}
@@ -122,9 +122,9 @@ static int model_show(struct seq_file *m, void *v)
 			boardmodel = "unknown";
 	} else if (!strcmp(model, "rk3399")) {
 		if (pid == 0 || pid == 3)
-			boardmodel = "Tinker Board 2";
+			boardmodel = "VisAI-Edge";
 		else if (pid >= 1)
-			boardmodel = "Tinker Board 2S";
+			boardmodel = "VisAI-Edge";
 		else
 			boardmodel = "unknown";
 	}
